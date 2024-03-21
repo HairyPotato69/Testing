@@ -253,3 +253,18 @@ bool queue::Queue::print()
 	return true;
 }
 
+bool queue::Queue::moveNthFront(int n) {
+	if (count < 2)
+		return 0;
+	if (n <= 1 || n > count)
+		return 0;
+
+	singly::Node* front{ head };
+	int temp;
+	for (int i{ 1 }; i < n; i++)
+		front = front->next;
+	temp = front->item;
+	front->item = head->item;
+	head->item = temp;
+	return 1;
+}
